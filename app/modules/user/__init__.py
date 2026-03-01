@@ -1,0 +1,1 @@
+from .v1.routers import router as user_management_router

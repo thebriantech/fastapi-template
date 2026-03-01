@@ -8944,3 +8944,1269 @@ ValueError: key_or_list must not be the empty list
 2024-12-12 04:23:02.109 | INFO     | app.utils.triton_clients.triton_grpc_client:prepare:131 - Model metadata for fr_vit_small version 1 uri triton-server:8001
 2024-12-12 04:23:02.114 | INFO     | app.utils.triton_clients.triton_grpc_client:parse_model_grpc:65 - {'triton_type': 'recognition', 'model_name': 'fr_vit_small', 'model_version': 1, 'batch_size': 10, 'triton_uri': 'triton-server:8001', 'input_shape': [3, 112, 112], 'input_path': '../../test_img', 'output_path': '../../res_img', 'num_input': 1, 'num_output': 1}
 2024-12-12 04:23:02.118 | INFO     | app.utils.triton_clients.triton_grpc_client:parse_model_grpc:66 - Length of the model outputs: 1
+2026-03-01 01:42:18.407 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 01:42:18.418 | SUCCESS  | app.db.mongodb_base:setup_db:49 - Initialize mongodb success
+2026-03-01 01:42:18.419 | SUCCESS  | app.main:lifespan:71 - Server startup complete
+2026-03-01 01:42:18.420 | INFO     | app.main:lifespan:76 - Shutting down – releasing resources …
+2026-03-01 01:43:20.316 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 01:43:20.319 | SUCCESS  | app.db.mongodb_base:setup_db:49 - Initialize mongodb success
+2026-03-01 01:43:20.319 | SUCCESS  | app.main:lifespan:71 - Server startup complete
+2026-03-01 01:43:20.320 | INFO     | app.main:lifespan:76 - Shutting down – releasing resources …
+2026-03-01 01:44:03.675 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 01:44:03.678 | SUCCESS  | app.db.mongodb_base:setup_db:49 - Initialize mongodb success
+2026-03-01 01:44:03.678 | SUCCESS  | app.main:lifespan:71 - Server startup complete
+2026-03-01 01:44:52.223 | INFO     | app.main:lifespan:76 - Shutting down – releasing resources …
+2026-03-01 01:44:53.125 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 01:44:53.127 | SUCCESS  | app.db.mongodb_base:setup_db:49 - Initialize mongodb success
+2026-03-01 01:44:53.128 | SUCCESS  | app.main:lifespan:71 - Server startup complete
+2026-03-01 01:51:52.419 | INFO     | app.main:lifespan:76 - Shutting down – releasing resources …
+2026-03-01 01:51:53.425 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 01:51:53.427 | SUCCESS  | app.db.mongodb_base:setup_db:49 - Initialize mongodb success
+2026-03-01 01:51:53.427 | SUCCESS  | app.main:lifespan:71 - Server startup complete
+2026-03-01 02:10:21.168 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 02:10:26.185 | ERROR    | app.db.mongodb_manager:connect:111 - Failed to connect to MongoDB: mongodb:27017: [Errno -3] Temporary failure in name resolution (configured timeouts: socketTimeoutMS: 5000.0ms, connectTimeoutMS: 5000.0ms), Timeout: 5.0s, Topology Description: <TopologyDescription id: 69a33d9dc8ec1df4d3e76c1e, topology_type: Unknown, servers: [<ServerDescription ('mongodb', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('mongodb:27017: [Errno -3] Temporary failure in name resolution (configured timeouts: socketTimeoutMS: 5000.0ms, connectTimeoutMS: 5000.0ms)')>]>
+2026-03-01 03:13:15.769 | INFO     | app.main:lifespan:76 - Shutting down – releasing resources …
+2026-03-01 03:13:17.529 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 03:13:22.545 | ERROR    | app.db.mongodb_manager:connect:123 - Failed to connect to MongoDB: mongodb:27017: [Errno -3] Temporary failure in name resolution (configured timeouts: socketTimeoutMS: 5000.0ms, connectTimeoutMS: 5000.0ms), Timeout: 5.0s, Topology Description: <TopologyDescription id: 69a34c5df5fe9c06e63b86ef, topology_type: Unknown, servers: [<ServerDescription ('mongodb', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('mongodb:27017: [Errno -3] Temporary failure in name resolution (configured timeouts: socketTimeoutMS: 5000.0ms, connectTimeoutMS: 5000.0ms)')>]>
+2026-03-01 03:25:25.781 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 03:25:25.822 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 03:25:25.933 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 03:25:25.936 | ERROR    | app.db.sql_document:execute_raw:310 - [demo_items] execute_raw failed: Traceback (most recent call last):
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('42000', "[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Incorrect syntax near 'demo_items'. (102) (SQLExecDirectW)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/media/HDD/briantech/fastapi-template/app/db/sql_document.py", line 304, in execute_raw
+    result = conn.execute(text(str(operation)), params or {})
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42000', "[42000] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Incorrect syntax near 'demo_items'. (102) (SQLExecDirectW)")
+[SQL: IF OBJECT_ID(N"demo_items", N"U") IS NULL CREATE TABLE demo_items (id INT IDENTITY(1,1) PRIMARY KEY, name NVARCHAR(255), price FLOAT)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+2026-03-01 03:25:25.937 | ERROR    | app.db.sql_document:insert_one:113 - [demo_items] insert_one failed: Traceback (most recent call last):
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid object name 'demo_items'. (208) (SQLExecDirectW)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/media/HDD/briantech/fastapi-template/app/db/sql_document.py", line 110, in insert_one
+    conn.execute(text(sql), document)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S02', "[42S02] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid object name 'demo_items'. (208) (SQLExecDirectW)")
+[SQL: INSERT INTO demo_items (name, price) VALUES (?, ?)]
+[parameters: ('Thingamajig', 29.99)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+2026-03-01 03:25:25.938 | ERROR    | app.db.sql_document:find:175 - [demo_items] find failed: Traceback (most recent call last):
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid object name 'demo_items'. (208) (SQLExecDirectW)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/media/HDD/briantech/fastapi-template/app/db/sql_document.py", line 172, in find
+    rows = conn.execute(text(sql), query).mappings().all()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S02', "[42S02] [Microsoft][ODBC Driver 18 for SQL Server][SQL Server]Invalid object name 'demo_items'. (208) (SQLExecDirectW)")
+[SQL: SELECT * FROM demo_items WHERE name = ?]
+[parameters: ('Thingamajig',)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+2026-03-01 03:25:25.939 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 03:25:25.939 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 03:25:25.939 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:00:45.959 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 13:00:50.983 | ERROR    | app.db.mongodb_manager:connect:123 - Failed to connect to MongoDB: mongodb:27017: [Errno -3] Temporary failure in name resolution (configured timeouts: socketTimeoutMS: 5000.0ms, connectTimeoutMS: 5000.0ms), Timeout: 5.0s, Topology Description: <TopologyDescription id: 69a3d60d7286eea1a3f1cf4a, topology_type: Unknown, servers: [<ServerDescription ('mongodb', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('mongodb:27017: [Errno -3] Temporary failure in name resolution (configured timeouts: socketTimeoutMS: 5000.0ms, connectTimeoutMS: 5000.0ms)')>]>
+2026-03-01 13:01:53.725 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 13:01:53.733 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:01:53.733 | INFO     | app.main:lifespan:92 - MongoDB connected
+2026-03-01 13:01:53.767 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:01:53.767 | INFO     | app.main:lifespan:107 - PostgreSQL connected
+2026-03-01 13:01:53.781 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:01:53.781 | INFO     | app.main:lifespan:122 - MySQL connected
+2026-03-01 13:01:53.819 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:01:53.819 | INFO     | app.main:lifespan:138 - MSSQL connected
+2026-03-01 13:02:03.704 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 13:02:03.711 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:02:03.711 | INFO     | app.main:lifespan:92 - MongoDB connected
+2026-03-01 13:02:03.746 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:02:03.746 | INFO     | app.main:lifespan:107 - PostgreSQL connected
+2026-03-01 13:02:03.761 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:02:03.761 | INFO     | app.main:lifespan:122 - MySQL connected
+2026-03-01 13:02:03.781 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:02:03.781 | INFO     | app.main:lifespan:138 - MSSQL connected
+2026-03-01 13:02:12.133 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 13:02:12.140 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:02:12.140 | INFO     | app.main:lifespan:92 - MongoDB connected
+2026-03-01 13:02:12.176 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:02:12.176 | INFO     | app.main:lifespan:107 - PostgreSQL connected
+2026-03-01 13:02:12.189 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:02:12.190 | INFO     | app.main:lifespan:122 - MySQL connected
+2026-03-01 13:02:12.210 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:02:12.210 | INFO     | app.main:lifespan:138 - MSSQL connected
+2026-03-01 13:02:12.676 | SUCCESS  | app.main:lifespan:161 - Server startup complete
+2026-03-01 13:05:27.317 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 13:05:27.323 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:05:27.324 | INFO     | app.main:lifespan:92 - MongoDB connected
+2026-03-01 13:05:27.356 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:05:27.356 | INFO     | app.main:lifespan:107 - PostgreSQL connected
+2026-03-01 13:05:27.370 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:05:27.370 | INFO     | app.main:lifespan:122 - MySQL connected
+2026-03-01 13:05:27.390 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:05:27.390 | INFO     | app.main:lifespan:138 - MSSQL connected
+2026-03-01 13:05:27.407 | ERROR    | app.db.sql_document:execute_raw:310 - [items] execute_raw failed: Traceback (most recent call last):
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1061, "Duplicate key name 'idx_items_my_name'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/media/HDD/briantech/fastapi-template/app/db/sql_document.py", line 304, in execute_raw
+    result = conn.execute(text(str(operation)), params or {})
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1061, "Duplicate key name 'idx_items_my_name'")
+[SQL: CREATE INDEX idx_items_my_name ON items (name)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+2026-03-01 13:05:27.419 | ERROR    | app.db.sql_document:execute_raw:310 - [tasks] execute_raw failed: Traceback (most recent call last):
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1061, "Duplicate key name 'idx_tasks_my_assignee'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/media/HDD/briantech/fastapi-template/app/db/sql_document.py", line 304, in execute_raw
+    result = conn.execute(text(str(operation)), params or {})
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1061, "Duplicate key name 'idx_tasks_my_assignee'")
+[SQL: CREATE INDEX idx_tasks_my_assignee ON tasks (assignee)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+2026-03-01 13:05:27.429 | ERROR    | app.db.sql_document:execute_raw:310 - [users] execute_raw failed: Traceback (most recent call last):
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1061, "Duplicate key name 'idx_users_my_group'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/media/HDD/briantech/fastapi-template/app/db/sql_document.py", line 304, in execute_raw
+    result = conn.execute(text(str(operation)), params or {})
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1061, "Duplicate key name 'idx_users_my_group'")
+[SQL: CREATE INDEX idx_users_my_group ON users (user_group)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+2026-03-01 13:05:27.434 | SUCCESS  | app.main:lifespan:161 - Server startup complete
+2026-03-01 13:05:27.434 | INFO     | app.main:lifespan:166 - Shutting down – releasing resources …
+2026-03-01 13:05:27.435 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:05:27.435 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:05:27.436 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:05:27.436 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:08:13.216 | INFO     | app.main:lifespan:166 - Shutting down – releasing resources …
+2026-03-01 13:08:13.217 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:08:13.218 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:08:13.218 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:08:13.219 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:08:14.152 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 13:08:14.159 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:08:14.159 | INFO     | app.main:lifespan:92 - MongoDB connected
+2026-03-01 13:08:14.193 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:08:14.194 | INFO     | app.main:lifespan:107 - PostgreSQL connected
+2026-03-01 13:08:14.208 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:08:14.208 | INFO     | app.main:lifespan:122 - MySQL connected
+2026-03-01 13:08:14.228 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:08:14.229 | INFO     | app.main:lifespan:138 - MSSQL connected
+2026-03-01 13:08:14.257 | ERROR    | app.db.sql_document:execute_raw:310 - [items] execute_raw failed: Traceback (most recent call last):
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1061, "Duplicate key name 'idx_items_my_name'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/media/HDD/briantech/fastapi-template/app/db/sql_document.py", line 304, in execute_raw
+    result = conn.execute(text(str(operation)), params or {})
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1061, "Duplicate key name 'idx_items_my_name'")
+[SQL: CREATE INDEX idx_items_my_name ON items (name)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+2026-03-01 13:08:14.269 | ERROR    | app.db.sql_document:execute_raw:310 - [tasks] execute_raw failed: Traceback (most recent call last):
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1061, "Duplicate key name 'idx_tasks_my_assignee'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/media/HDD/briantech/fastapi-template/app/db/sql_document.py", line 304, in execute_raw
+    result = conn.execute(text(str(operation)), params or {})
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1061, "Duplicate key name 'idx_tasks_my_assignee'")
+[SQL: CREATE INDEX idx_tasks_my_assignee ON tasks (assignee)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+2026-03-01 13:08:14.281 | ERROR    | app.db.sql_document:execute_raw:310 - [users] execute_raw failed: Traceback (most recent call last):
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1061, "Duplicate key name 'idx_users_my_group'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/media/HDD/briantech/fastapi-template/app/db/sql_document.py", line 304, in execute_raw
+    result = conn.execute(text(str(operation)), params or {})
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1061, "Duplicate key name 'idx_users_my_group'")
+[SQL: CREATE INDEX idx_users_my_group ON users (user_group)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+2026-03-01 13:08:14.287 | SUCCESS  | app.main:lifespan:161 - Server startup complete
+2026-03-01 13:14:21.472 | INFO     | app.main:lifespan:166 - Shutting down – releasing resources …
+2026-03-01 13:14:21.472 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:14:21.473 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:14:21.473 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:14:21.473 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:14:22.241 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 13:14:22.248 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:14:22.249 | INFO     | app.main:lifespan:92 - MongoDB connected
+2026-03-01 13:14:22.284 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:14:22.284 | INFO     | app.main:lifespan:107 - PostgreSQL connected
+2026-03-01 13:14:22.298 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:14:22.298 | INFO     | app.main:lifespan:122 - MySQL connected
+2026-03-01 13:14:22.322 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:14:22.323 | INFO     | app.main:lifespan:138 - MSSQL connected
+2026-03-01 13:14:22.332 | ERROR    | app.db.sql_document:execute_raw:310 - [items] execute_raw failed: Traceback (most recent call last):
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1061, "Duplicate key name 'idx_items_my_name'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/media/HDD/briantech/fastapi-template/app/db/sql_document.py", line 304, in execute_raw
+    result = conn.execute(text(str(operation)), params or {})
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1061, "Duplicate key name 'idx_items_my_name'")
+[SQL: CREATE INDEX idx_items_my_name ON items (name)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+2026-03-01 13:14:22.346 | ERROR    | app.db.sql_document:execute_raw:310 - [tasks] execute_raw failed: Traceback (most recent call last):
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1061, "Duplicate key name 'idx_tasks_my_assignee'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/media/HDD/briantech/fastapi-template/app/db/sql_document.py", line 304, in execute_raw
+    result = conn.execute(text(str(operation)), params or {})
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1061, "Duplicate key name 'idx_tasks_my_assignee'")
+[SQL: CREATE INDEX idx_tasks_my_assignee ON tasks (assignee)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+2026-03-01 13:14:22.361 | ERROR    | app.db.sql_document:execute_raw:310 - [users] execute_raw failed: Traceback (most recent call last):
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1061, "Duplicate key name 'idx_users_my_group'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/media/HDD/briantech/fastapi-template/app/db/sql_document.py", line 304, in execute_raw
+    result = conn.execute(text(str(operation)), params or {})
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bangpc/miniconda3/envs/fastapi-template/lib/python3.10/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1061, "Duplicate key name 'idx_users_my_group'")
+[SQL: CREATE INDEX idx_users_my_group ON users (user_group)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+2026-03-01 13:14:22.368 | SUCCESS  | app.main:lifespan:161 - Server startup complete
+2026-03-01 13:17:45.612 | INFO     | app.main:lifespan:166 - Shutting down – releasing resources …
+2026-03-01 13:17:45.613 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:17:45.613 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:17:45.614 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:17:45.614 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:17:46.645 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 13:17:46.652 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:17:46.653 | INFO     | app.main:lifespan:92 - MongoDB connected
+2026-03-01 13:17:46.689 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:17:46.689 | INFO     | app.main:lifespan:107 - PostgreSQL connected
+2026-03-01 13:17:46.704 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:17:46.704 | INFO     | app.main:lifespan:122 - MySQL connected
+2026-03-01 13:17:46.726 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:17:46.726 | INFO     | app.main:lifespan:138 - MSSQL connected
+2026-03-01 13:17:46.779 | SUCCESS  | app.main:lifespan:161 - Server startup complete
+2026-03-01 13:18:01.107 | INFO     | app.main:lifespan:166 - Shutting down – releasing resources …
+2026-03-01 13:18:01.108 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:18:01.109 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:18:01.109 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:18:01.110 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:18:01.697 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 13:18:01.704 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:18:01.705 | INFO     | app.main:lifespan:92 - MongoDB connected
+2026-03-01 13:18:01.739 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:18:01.739 | INFO     | app.main:lifespan:107 - PostgreSQL connected
+2026-03-01 13:18:01.753 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:18:01.753 | INFO     | app.main:lifespan:122 - MySQL connected
+2026-03-01 13:18:01.776 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:18:01.776 | INFO     | app.main:lifespan:138 - MSSQL connected
+2026-03-01 13:18:01.819 | SUCCESS  | app.main:lifespan:161 - Server startup complete
+2026-03-01 13:28:53.548 | INFO     | app.main:lifespan:166 - Shutting down – releasing resources …
+2026-03-01 13:28:53.550 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:28:53.551 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:28:53.551 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:28:53.552 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:28:54.434 | INFO     | app.main:lifespan:57 - Starting server – initializing resources …
+2026-03-01 13:28:54.441 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:28:54.441 | INFO     | app.main:lifespan:92 - MongoDB connected
+2026-03-01 13:28:54.474 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:28:54.474 | INFO     | app.main:lifespan:107 - PostgreSQL connected
+2026-03-01 13:28:54.488 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:28:54.488 | INFO     | app.main:lifespan:122 - MySQL connected
+2026-03-01 13:28:54.510 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:28:54.511 | INFO     | app.main:lifespan:138 - MSSQL connected
+2026-03-01 13:28:54.555 | SUCCESS  | app.main:lifespan:161 - Server startup complete
+2026-03-01 13:29:07.682 | INFO     | app.main:lifespan:166 - Shutting down – releasing resources …
+2026-03-01 13:29:07.684 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:29:07.684 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:29:07.684 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:29:07.684 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:29:08.539 | INFO     | app.main:lifespan:60 - Starting server – initializing resources …
+2026-03-01 13:29:08.546 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:29:08.546 | INFO     | app.main:lifespan:95 - MongoDB connected
+2026-03-01 13:29:08.581 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:29:08.581 | INFO     | app.main:lifespan:110 - PostgreSQL connected
+2026-03-01 13:29:08.595 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:29:08.595 | INFO     | app.main:lifespan:125 - MySQL connected
+2026-03-01 13:29:08.615 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:29:08.616 | INFO     | app.main:lifespan:141 - MSSQL connected
+2026-03-01 13:29:08.660 | SUCCESS  | app.main:lifespan:164 - Server startup complete
+2026-03-01 13:29:14.673 | INFO     | app.main:lifespan:169 - Shutting down – releasing resources …
+2026-03-01 13:29:14.674 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:29:14.674 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:29:14.675 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:29:14.675 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:29:15.584 | INFO     | app.main:lifespan:60 - Starting server – initializing resources …
+2026-03-01 13:29:15.591 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:29:15.591 | INFO     | app.main:lifespan:95 - MongoDB connected
+2026-03-01 13:29:15.624 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:29:15.625 | INFO     | app.main:lifespan:110 - PostgreSQL connected
+2026-03-01 13:29:15.638 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:29:15.638 | INFO     | app.main:lifespan:125 - MySQL connected
+2026-03-01 13:29:15.658 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:29:15.658 | INFO     | app.main:lifespan:141 - MSSQL connected
+2026-03-01 13:29:15.702 | SUCCESS  | app.main:lifespan:164 - Server startup complete
+2026-03-01 13:40:40.860 | INFO     | app.main:lifespan:169 - Shutting down – releasing resources …
+2026-03-01 13:40:40.861 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:40:40.861 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:40:40.862 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:40:40.862 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:40:41.808 | INFO     | app.main:lifespan:60 - Starting server – initializing resources …
+2026-03-01 13:40:41.815 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:40:41.815 | INFO     | app.main:lifespan:95 - MongoDB connected
+2026-03-01 13:40:41.850 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:40:41.850 | INFO     | app.main:lifespan:110 - PostgreSQL connected
+2026-03-01 13:40:41.864 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:40:41.865 | INFO     | app.main:lifespan:125 - MySQL connected
+2026-03-01 13:40:41.885 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:40:41.885 | INFO     | app.main:lifespan:141 - MSSQL connected
+2026-03-01 13:40:41.928 | SUCCESS  | app.main:lifespan:164 - Server startup complete
+2026-03-01 13:40:57.463 | INFO     | app.main:lifespan:169 - Shutting down – releasing resources …
+2026-03-01 13:40:57.463 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:40:57.464 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:40:57.464 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:40:57.464 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:41:07.950 | INFO     | app.main:lifespan:65 - Starting server – initializing resources …
+2026-03-01 13:41:07.957 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:41:07.957 | INFO     | app.main:lifespan:100 - MongoDB connected
+2026-03-01 13:41:07.992 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:41:07.992 | INFO     | app.main:lifespan:115 - PostgreSQL connected
+2026-03-01 13:41:08.008 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:41:08.008 | INFO     | app.main:lifespan:130 - MySQL connected
+2026-03-01 13:41:08.029 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:41:08.030 | INFO     | app.main:lifespan:146 - MSSQL connected
+2026-03-01 13:41:08.083 | SUCCESS  | app.main:lifespan:169 - Server startup complete
+2026-03-01 13:41:39.449 | INFO     | app.main:lifespan:174 - Shutting down – releasing resources …
+2026-03-01 13:41:39.450 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:41:39.450 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:41:39.451 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:41:39.451 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:41:40.033 | INFO     | app.main:lifespan:65 - Starting server – initializing resources …
+2026-03-01 13:41:40.041 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:41:40.041 | INFO     | app.main:lifespan:100 - MongoDB connected
+2026-03-01 13:41:40.076 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:41:40.076 | INFO     | app.main:lifespan:115 - PostgreSQL connected
+2026-03-01 13:41:40.090 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:41:40.090 | INFO     | app.main:lifespan:130 - MySQL connected
+2026-03-01 13:41:40.112 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:41:40.112 | INFO     | app.main:lifespan:146 - MSSQL connected
+2026-03-01 13:41:40.156 | SUCCESS  | app.main:lifespan:169 - Server startup complete
+2026-03-01 13:41:52.583 | INFO     | app.main:lifespan:174 - Shutting down – releasing resources …
+2026-03-01 13:41:52.584 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:41:52.585 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:41:52.585 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:41:52.586 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:41:53.575 | INFO     | app.main:lifespan:65 - Starting server – initializing resources …
+2026-03-01 13:41:53.582 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:41:53.582 | INFO     | app.main:lifespan:100 - MongoDB connected
+2026-03-01 13:41:53.625 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:41:53.625 | INFO     | app.main:lifespan:115 - PostgreSQL connected
+2026-03-01 13:41:53.638 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:41:53.639 | INFO     | app.main:lifespan:130 - MySQL connected
+2026-03-01 13:41:53.661 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:41:53.661 | INFO     | app.main:lifespan:146 - MSSQL connected
+2026-03-01 13:41:53.703 | SUCCESS  | app.main:lifespan:169 - Server startup complete
+2026-03-01 13:42:18.758 | INFO     | app.main:lifespan:174 - Shutting down – releasing resources …
+2026-03-01 13:42:18.759 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:42:18.760 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:42:18.760 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:42:18.761 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:42:19.661 | INFO     | app.main:lifespan:65 - Starting server – initializing resources …
+2026-03-01 13:42:19.668 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:42:19.668 | INFO     | app.main:lifespan:100 - MongoDB connected
+2026-03-01 13:42:19.703 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:42:19.703 | INFO     | app.main:lifespan:115 - PostgreSQL connected
+2026-03-01 13:42:19.718 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:42:19.718 | INFO     | app.main:lifespan:130 - MySQL connected
+2026-03-01 13:42:19.739 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:42:19.739 | INFO     | app.main:lifespan:146 - MSSQL connected
+2026-03-01 13:42:19.788 | SUCCESS  | app.main:lifespan:169 - Server startup complete
+2026-03-01 13:42:24.495 | INFO     | app.main:lifespan:174 - Shutting down – releasing resources …
+2026-03-01 13:42:24.496 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:42:24.496 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:42:24.497 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:42:24.497 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:42:25.230 | INFO     | app.main:lifespan:65 - Starting server – initializing resources …
+2026-03-01 13:42:25.238 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:42:25.238 | INFO     | app.main:lifespan:100 - MongoDB connected
+2026-03-01 13:42:25.272 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:42:25.272 | INFO     | app.main:lifespan:115 - PostgreSQL connected
+2026-03-01 13:42:25.286 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:42:25.286 | INFO     | app.main:lifespan:130 - MySQL connected
+2026-03-01 13:42:25.307 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:42:25.307 | INFO     | app.main:lifespan:146 - MSSQL connected
+2026-03-01 13:42:25.356 | SUCCESS  | app.main:lifespan:169 - Server startup complete
+2026-03-01 13:42:29.966 | INFO     | app.main:lifespan:174 - Shutting down – releasing resources …
+2026-03-01 13:42:29.967 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:42:29.967 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:42:29.968 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:42:29.968 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:42:30.766 | INFO     | app.main:lifespan:65 - Starting server – initializing resources …
+2026-03-01 13:42:30.773 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:42:30.773 | INFO     | app.main:lifespan:100 - MongoDB connected
+2026-03-01 13:42:30.807 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:42:30.807 | INFO     | app.main:lifespan:115 - PostgreSQL connected
+2026-03-01 13:42:30.821 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:42:30.821 | INFO     | app.main:lifespan:130 - MySQL connected
+2026-03-01 13:42:30.841 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:42:30.841 | INFO     | app.main:lifespan:146 - MSSQL connected
+2026-03-01 13:42:30.886 | SUCCESS  | app.main:lifespan:169 - Server startup complete
+2026-03-01 13:42:54.555 | INFO     | app.main:lifespan:174 - Shutting down – releasing resources …
+2026-03-01 13:42:54.556 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 13:42:54.556 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 13:42:54.556 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 13:42:54.556 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 13:42:55.342 | INFO     | app.main:lifespan:65 - Starting server – initializing resources …
+2026-03-01 13:42:55.348 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 13:42:55.349 | INFO     | app.main:lifespan:100 - MongoDB connected
+2026-03-01 13:42:55.386 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 13:42:55.386 | INFO     | app.main:lifespan:115 - PostgreSQL connected
+2026-03-01 13:42:55.400 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 13:42:55.400 | INFO     | app.main:lifespan:130 - MySQL connected
+2026-03-01 13:42:55.422 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 13:42:55.422 | INFO     | app.main:lifespan:146 - MSSQL connected
+2026-03-01 13:42:55.465 | SUCCESS  | app.main:lifespan:169 - Server startup complete
+2026-03-01 14:01:29.019 | INFO     | app.main:lifespan:174 - Shutting down – releasing resources …
+2026-03-01 14:01:29.020 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 14:01:29.021 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 14:01:29.021 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 14:01:29.022 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 14:01:29.978 | INFO     | app.main:lifespan:65 - Starting server – initializing resources …
+2026-03-01 14:01:29.985 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 14:01:29.985 | INFO     | app.main:lifespan:100 - MongoDB connected
+2026-03-01 14:01:30.020 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 14:01:30.020 | INFO     | app.main:lifespan:115 - PostgreSQL connected
+2026-03-01 14:01:30.033 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 14:01:30.034 | INFO     | app.main:lifespan:130 - MySQL connected
+2026-03-01 14:01:30.070 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 14:01:30.070 | INFO     | app.main:lifespan:146 - MSSQL connected
+2026-03-01 14:01:30.106 | SUCCESS  | app.main:lifespan:169 - Server startup complete
+2026-03-01 14:07:11.418 | INFO     | app.main:lifespan:174 - Shutting down – releasing resources …
+2026-03-01 14:07:11.419 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 14:07:11.420 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 14:07:11.421 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 14:07:11.421 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 14:07:12.396 | INFO     | app.main:lifespan:65 - Starting server – environment: development
+2026-03-01 14:07:12.396 | INFO     | app.main:lifespan:66 - Initializing resources …
+2026-03-01 14:07:12.404 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 14:07:12.404 | INFO     | app.main:lifespan:101 - MongoDB connected
+2026-03-01 14:07:12.445 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 14:07:12.445 | INFO     | app.main:lifespan:116 - PostgreSQL connected
+2026-03-01 14:07:12.459 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 14:07:12.459 | INFO     | app.main:lifespan:131 - MySQL connected
+2026-03-01 14:07:12.479 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 14:07:12.479 | INFO     | app.main:lifespan:147 - MSSQL connected
+2026-03-01 14:07:12.528 | SUCCESS  | app.main:lifespan:170 - Server startup complete
+2026-03-01 14:22:10.277 | INFO     | app.main:lifespan:175 - Shutting down – releasing resources …
+2026-03-01 14:22:10.278 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 14:22:10.278 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 14:22:10.278 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 14:22:10.279 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 14:22:11.306 | INFO     | app.main:lifespan:65 - Starting server – environment: development
+2026-03-01 14:22:11.306 | INFO     | app.main:lifespan:66 - Initializing resources …
+2026-03-01 14:22:11.313 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 14:22:11.313 | INFO     | app.main:lifespan:101 - MongoDB connected
+2026-03-01 14:22:11.350 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 14:22:11.350 | INFO     | app.main:lifespan:116 - PostgreSQL connected
+2026-03-01 14:22:11.364 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 14:22:11.364 | INFO     | app.main:lifespan:131 - MySQL connected
+2026-03-01 14:22:11.384 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 14:22:11.384 | INFO     | app.main:lifespan:147 - MSSQL connected
+2026-03-01 14:22:11.436 | SUCCESS  | app.main:lifespan:170 - Server startup complete
+2026-03-01 15:00:17.099 | INFO     | app.main:lifespan:175 - Shutting down – releasing resources …
+2026-03-01 15:00:17.100 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 15:00:17.100 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 15:00:17.100 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 15:00:17.101 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 15:00:18.009 | INFO     | app.main:lifespan:65 - Starting server – environment: development
+2026-03-01 15:00:18.009 | INFO     | app.main:lifespan:66 - Initializing resources …
+2026-03-01 15:00:18.016 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 15:00:18.016 | INFO     | app.main:lifespan:101 - MongoDB connected
+2026-03-01 15:00:18.051 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 15:00:18.052 | INFO     | app.main:lifespan:116 - PostgreSQL connected
+2026-03-01 15:00:18.066 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 15:00:18.066 | INFO     | app.main:lifespan:131 - MySQL connected
+2026-03-01 15:00:18.102 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 15:00:18.102 | INFO     | app.main:lifespan:147 - MSSQL connected
+2026-03-01 15:00:18.137 | SUCCESS  | app.main:lifespan:170 - Server startup complete
+2026-03-01 15:00:32.665 | INFO     | app.main:lifespan:175 - Shutting down – releasing resources …
+2026-03-01 15:00:32.666 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 15:00:32.667 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 15:00:32.667 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 15:00:32.667 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 15:00:33.566 | INFO     | app.main:lifespan:65 - Starting server – environment: development
+2026-03-01 15:00:33.566 | INFO     | app.main:lifespan:66 - Initializing resources …
+2026-03-01 15:00:33.574 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 15:00:33.574 | INFO     | app.main:lifespan:101 - MongoDB connected
+2026-03-01 15:00:33.613 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 15:00:33.614 | INFO     | app.main:lifespan:116 - PostgreSQL connected
+2026-03-01 15:00:33.632 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 15:00:33.632 | INFO     | app.main:lifespan:131 - MySQL connected
+2026-03-01 15:00:33.654 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 15:00:33.654 | INFO     | app.main:lifespan:147 - MSSQL connected
+2026-03-01 15:00:33.700 | SUCCESS  | app.main:lifespan:170 - Server startup complete
+2026-03-01 15:00:36.606 | INFO     | app.main:lifespan:175 - Shutting down – releasing resources …
+2026-03-01 15:00:36.607 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 15:00:36.608 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 15:00:36.608 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 15:00:36.608 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 15:00:37.598 | INFO     | app.main:lifespan:65 - Starting server – environment: development
+2026-03-01 15:00:37.598 | INFO     | app.main:lifespan:66 - Initializing resources …
+2026-03-01 15:00:37.605 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 15:00:37.605 | INFO     | app.main:lifespan:101 - MongoDB connected
+2026-03-01 15:00:37.643 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 15:00:37.643 | INFO     | app.main:lifespan:116 - PostgreSQL connected
+2026-03-01 15:00:37.661 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 15:00:37.661 | INFO     | app.main:lifespan:131 - MySQL connected
+2026-03-01 15:00:37.686 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 15:00:37.686 | INFO     | app.main:lifespan:147 - MSSQL connected
+2026-03-01 15:00:37.732 | SUCCESS  | app.main:lifespan:170 - Server startup complete
+2026-03-01 15:19:54.942 | INFO     | app.main:lifespan:175 - Shutting down – releasing resources …
+2026-03-01 15:19:54.943 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 15:19:54.944 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 15:19:54.944 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 15:19:54.944 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 15:19:55.893 | INFO     | app.main:lifespan:65 - Starting server – environment: development
+2026-03-01 15:19:55.893 | INFO     | app.main:lifespan:66 - Initializing resources …
+2026-03-01 15:19:55.900 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 15:19:55.900 | INFO     | app.main:lifespan:101 - MongoDB connected
+2026-03-01 15:19:55.935 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 15:19:55.935 | INFO     | app.main:lifespan:116 - PostgreSQL connected
+2026-03-01 15:19:55.949 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 15:19:55.949 | INFO     | app.main:lifespan:131 - MySQL connected
+2026-03-01 15:19:55.970 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 15:19:55.971 | INFO     | app.main:lifespan:147 - MSSQL connected
+2026-03-01 15:19:56.013 | SUCCESS  | app.main:lifespan:170 - Server startup complete
+2026-03-01 15:21:01.044 | INFO     | app.main:lifespan:175 - Shutting down – releasing resources …
+2026-03-01 15:21:01.045 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 15:21:01.045 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 15:21:01.046 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 15:21:01.046 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 15:21:02.075 | INFO     | app.main:lifespan:65 - Starting server – environment: development
+2026-03-01 15:21:02.075 | INFO     | app.main:lifespan:66 - Initializing resources …
+2026-03-01 15:21:02.085 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 15:21:02.085 | INFO     | app.main:lifespan:101 - MongoDB connected
+2026-03-01 15:21:02.137 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 15:21:02.137 | INFO     | app.main:lifespan:116 - PostgreSQL connected
+2026-03-01 15:21:02.157 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 15:21:02.157 | INFO     | app.main:lifespan:131 - MySQL connected
+2026-03-01 15:21:02.187 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 15:21:02.187 | INFO     | app.main:lifespan:147 - MSSQL connected
+2026-03-01 15:21:02.231 | SUCCESS  | app.main:lifespan:170 - Server startup complete
+2026-03-01 15:24:29.139 | INFO     | app.main:lifespan:175 - Shutting down – releasing resources …
+2026-03-01 15:24:29.140 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 15:24:29.141 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 15:24:29.142 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 15:24:29.142 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 15:58:46.380 | INFO     | app.main:lifespan:65 - Starting server – environment: development
+2026-03-01 15:58:46.380 | INFO     | app.main:lifespan:66 - Initializing resources …
+2026-03-01 15:58:46.387 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 15:58:46.387 | INFO     | app.main:lifespan:101 - MongoDB connected
+2026-03-01 15:58:46.425 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 15:58:46.425 | INFO     | app.main:lifespan:116 - PostgreSQL connected
+2026-03-01 15:58:46.440 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 15:58:46.440 | INFO     | app.main:lifespan:131 - MySQL connected
+2026-03-01 15:58:46.466 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 15:58:46.467 | INFO     | app.main:lifespan:147 - MSSQL connected
+2026-03-01 15:58:46.509 | SUCCESS  | app.main:lifespan:170 - Server startup complete
+2026-03-01 17:25:28.309 | INFO     | app.main:lifespan:175 - Shutting down – releasing resources …
+2026-03-01 17:25:28.310 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 17:25:28.310 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 17:25:28.310 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 17:25:28.311 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 17:25:54.210 | INFO     | app.main:lifespan:65 - Starting server – environment: development
+2026-03-01 17:25:54.210 | INFO     | app.main:lifespan:66 - Initializing resources …
+2026-03-01 17:25:54.218 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 17:25:54.218 | INFO     | app.main:lifespan:101 - MongoDB connected
+2026-03-01 17:25:54.252 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 17:25:54.253 | INFO     | app.main:lifespan:116 - PostgreSQL connected
+2026-03-01 17:25:54.267 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 17:25:54.267 | INFO     | app.main:lifespan:131 - MySQL connected
+2026-03-01 17:25:54.299 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 17:25:54.299 | INFO     | app.main:lifespan:147 - MSSQL connected
+2026-03-01 17:26:15.202 | INFO     | app.main:lifespan:65 - Starting server – environment: development
+2026-03-01 17:26:15.202 | INFO     | app.main:lifespan:66 - Initializing resources …
+2026-03-01 17:26:15.209 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 17:26:15.210 | INFO     | app.main:lifespan:101 - MongoDB connected
+2026-03-01 17:26:15.248 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 17:26:15.248 | INFO     | app.main:lifespan:116 - PostgreSQL connected
+2026-03-01 17:26:15.263 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 17:26:15.263 | INFO     | app.main:lifespan:131 - MySQL connected
+2026-03-01 17:26:15.284 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 17:26:15.284 | INFO     | app.main:lifespan:147 - MSSQL connected
+2026-03-01 17:26:15.327 | SUCCESS  | app.main:lifespan:170 - Server startup complete
+2026-03-01 17:26:45.491 | INFO     | app.main:lifespan:175 - Shutting down – releasing resources …
+2026-03-01 17:26:45.494 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 17:26:45.496 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 17:26:45.498 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 17:26:45.499 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 17:26:46.645 | INFO     | app.main:lifespan:65 - Starting server – environment: development
+2026-03-01 17:26:46.646 | INFO     | app.main:lifespan:66 - Initializing resources …
+2026-03-01 17:26:46.652 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 17:26:46.653 | INFO     | app.main:lifespan:101 - MongoDB connected
+2026-03-01 17:26:46.687 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 17:26:46.687 | INFO     | app.main:lifespan:116 - PostgreSQL connected
+2026-03-01 17:26:46.701 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 17:26:46.701 | INFO     | app.main:lifespan:131 - MySQL connected
+2026-03-01 17:26:46.723 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 17:26:46.723 | INFO     | app.main:lifespan:147 - MSSQL connected
+2026-03-01 17:26:46.759 | SUCCESS  | app.main:lifespan:170 - Server startup complete
+2026-03-01 18:33:33.511 | INFO     | app.main:lifespan:66 - Starting server – environment: development
+2026-03-01 18:33:33.526 | INFO     | app.main:lifespan:67 - Initializing resources …
+2026-03-01 18:33:33.546 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 18:33:33.546 | INFO     | app.main:lifespan:102 - MongoDB connected
+2026-03-01 18:33:33.632 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 18:33:33.632 | INFO     | app.main:lifespan:117 - PostgreSQL connected
+2026-03-01 18:33:33.661 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 18:33:33.661 | INFO     | app.main:lifespan:132 - MySQL connected
+2026-03-01 18:33:33.728 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 18:33:33.728 | INFO     | app.main:lifespan:148 - MSSQL connected
+2026-03-01 18:33:33.773 | SUCCESS  | app.main:lifespan:171 - Server startup complete
+2026-03-01 18:54:43.787 | INFO     | app.main:lifespan:176 - Shutting down – releasing resources …
+2026-03-01 18:54:43.789 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 18:54:43.790 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 18:54:43.790 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 18:54:43.791 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 18:54:44.728 | INFO     | app.main:lifespan:66 - Starting server – environment: development
+2026-03-01 18:54:44.728 | INFO     | app.main:lifespan:67 - Initializing resources …
+2026-03-01 18:54:44.734 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 18:54:44.735 | INFO     | app.main:lifespan:102 - MongoDB connected
+2026-03-01 18:54:44.769 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 18:54:44.769 | INFO     | app.main:lifespan:117 - PostgreSQL connected
+2026-03-01 18:54:44.785 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 18:54:44.785 | INFO     | app.main:lifespan:132 - MySQL connected
+2026-03-01 18:54:44.806 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 18:54:44.806 | INFO     | app.main:lifespan:148 - MSSQL connected
+2026-03-01 18:54:44.843 | SUCCESS  | app.main:lifespan:171 - Server startup complete
+2026-03-01 18:55:12.607 | INFO     | app.main:lifespan:176 - Shutting down – releasing resources …
+2026-03-01 18:55:12.609 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 18:55:12.609 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 18:55:12.610 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 18:55:12.611 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 18:55:13.317 | INFO     | app.main:lifespan:66 - Starting server – environment: development
+2026-03-01 18:55:13.317 | INFO     | app.main:lifespan:67 - Initializing resources …
+2026-03-01 18:55:13.324 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 18:55:13.325 | INFO     | app.main:lifespan:102 - MongoDB connected
+2026-03-01 18:55:13.366 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 18:55:13.367 | INFO     | app.main:lifespan:117 - PostgreSQL connected
+2026-03-01 18:55:13.381 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 18:55:13.382 | INFO     | app.main:lifespan:132 - MySQL connected
+2026-03-01 18:55:13.401 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 18:55:13.402 | INFO     | app.main:lifespan:148 - MSSQL connected
+2026-03-01 18:55:13.445 | SUCCESS  | app.main:lifespan:171 - Server startup complete
+2026-03-01 18:58:53.254 | INFO     | app.main:lifespan:176 - Shutting down – releasing resources …
+2026-03-01 18:58:53.256 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 18:58:53.256 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 18:58:53.257 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 18:58:53.257 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 18:58:54.205 | INFO     | app.main:lifespan:66 - Starting server – environment: development
+2026-03-01 18:58:54.205 | INFO     | app.main:lifespan:67 - Initializing resources …
+2026-03-01 18:58:54.212 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 18:58:54.212 | INFO     | app.main:lifespan:102 - MongoDB connected
+2026-03-01 18:58:54.246 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 18:58:54.246 | INFO     | app.main:lifespan:117 - PostgreSQL connected
+2026-03-01 18:58:54.260 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 18:58:54.261 | INFO     | app.main:lifespan:132 - MySQL connected
+2026-03-01 18:58:54.281 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 18:58:54.281 | INFO     | app.main:lifespan:148 - MSSQL connected
+2026-03-01 18:58:54.322 | SUCCESS  | app.main:lifespan:171 - Server startup complete
+2026-03-01 19:18:43.170 | INFO     | app.main:lifespan:176 - Shutting down – releasing resources …
+2026-03-01 19:18:43.171 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 19:18:43.172 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 19:18:43.172 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 19:18:43.172 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 19:19:04.471 | INFO     | app.main:lifespan:66 - Starting server – environment: development
+2026-03-01 19:19:04.471 | INFO     | app.main:lifespan:67 - Initializing resources …
+2026-03-01 19:19:04.479 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 19:19:04.479 | INFO     | app.main:lifespan:102 - MongoDB connected
+2026-03-01 19:19:04.512 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 19:19:04.512 | INFO     | app.main:lifespan:117 - PostgreSQL connected
+2026-03-01 19:19:04.527 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 19:19:04.527 | INFO     | app.main:lifespan:132 - MySQL connected
+2026-03-01 19:19:04.563 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 19:19:04.563 | INFO     | app.main:lifespan:148 - MSSQL connected
+2026-03-01 19:19:04.597 | SUCCESS  | app.main:lifespan:171 - Server startup complete
+2026-03-01 19:19:46.400 | INFO     | app.main:lifespan:176 - Shutting down – releasing resources …
+2026-03-01 19:19:46.401 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 19:19:46.402 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 19:19:46.402 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 19:19:46.403 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 19:19:47.427 | INFO     | app.main:lifespan:66 - Starting server – environment: development
+2026-03-01 19:19:47.427 | INFO     | app.main:lifespan:67 - Initializing resources …
+2026-03-01 19:19:47.434 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 19:19:47.434 | INFO     | app.main:lifespan:102 - MongoDB connected
+2026-03-01 19:19:47.467 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 19:19:47.468 | INFO     | app.main:lifespan:117 - PostgreSQL connected
+2026-03-01 19:19:47.482 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 19:19:47.482 | INFO     | app.main:lifespan:132 - MySQL connected
+2026-03-01 19:19:47.502 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 19:19:47.503 | INFO     | app.main:lifespan:148 - MSSQL connected
+2026-03-01 19:19:47.547 | SUCCESS  | app.main:lifespan:171 - Server startup complete
+2026-03-01 19:27:05.814 | INFO     | app.main:lifespan:176 - Shutting down – releasing resources …
+2026-03-01 19:27:05.815 | INFO     | app.db.mongodb_manager:disconnect:132 - MongoDB connection closed
+2026-03-01 19:27:05.816 | INFO     | app.db.sql_manager:disconnect:150 - PostgreSQLManager connection pool disposed
+2026-03-01 19:27:05.816 | INFO     | app.db.sql_manager:disconnect:150 - MySQLManager connection pool disposed
+2026-03-01 19:27:05.816 | INFO     | app.db.sql_manager:disconnect:150 - MSSQLManager connection pool disposed
+2026-03-01 19:27:06.701 | INFO     | app.main:lifespan:66 - Starting server – environment: development
+2026-03-01 19:27:06.701 | INFO     | app.main:lifespan:67 - Initializing resources …
+2026-03-01 19:27:06.708 | SUCCESS  | app.db.mongodb_manager:connect:121 - MongoDB connection established successfully
+2026-03-01 19:27:06.708 | INFO     | app.main:lifespan:102 - MongoDB connected
+2026-03-01 19:27:06.741 | SUCCESS  | app.db.sql_manager:connect:135 - PostgreSQLManager connection established (postgresql)
+2026-03-01 19:27:06.741 | INFO     | app.main:lifespan:117 - PostgreSQL connected
+2026-03-01 19:27:06.755 | SUCCESS  | app.db.sql_manager:connect:135 - MySQLManager connection established (mysql)
+2026-03-01 19:27:06.756 | INFO     | app.main:lifespan:132 - MySQL connected
+2026-03-01 19:27:06.776 | SUCCESS  | app.db.sql_manager:connect:135 - MSSQLManager connection established (mssql)
+2026-03-01 19:27:06.776 | INFO     | app.main:lifespan:148 - MSSQL connected
+2026-03-01 19:27:06.817 | SUCCESS  | app.main:lifespan:171 - Server startup complete

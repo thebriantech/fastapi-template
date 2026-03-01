@@ -1,2 +1,0 @@
-2024-11-15 09:37:39.770 | INFO     | app.user.routers:si_register:41 - ====SI Register====
-2024-11-15 09:37:40.001 | SUCCESS  | app.user.services:si_register:48 - Register success

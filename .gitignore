@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Environment files — never commit real secrets
+.env
+.env.*.local
+
+# Logs
+app/logs/logs_data/*.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp

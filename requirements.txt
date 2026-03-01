@@ -1,4 +1,17 @@
 fastapi==0.105.0
 fastapi-utils==0.7.0
+uvicorn[standard]==0.25.0
 PyJWT==2.9.0
-passlib==1.7.4
+bcrypt>=4.0.0
+pymongo==4.6.1
+loguru==0.7.2
+python-dotenv==1.0.0
+pydantic-settings>=2.0.0
+typing_inspect==0.9.0
+
+# ── SQL backends ─────────────────────────────────────────────────────────────
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0     # PostgreSQL
+pymysql>=1.1.0             # MySQL / MariaDB
+cryptography>=42.0.0       # Required by pymysql for MySQL 8 caching_sha2_password auth
+pyodbc>=5.0.0              # MSSQL (SQL Server) — requires ODBC Driver 18 at OS level

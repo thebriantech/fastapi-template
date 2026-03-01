@@ -30,13 +30,6 @@ class StatusCode(Enum):
             "description": "Insert record into database error"
         }
     }
-    # OBJECT_EXIST_ERROR = {
-    #     "http_code": 400,
-    #     "content": {
-    #         "code": "ERR_00002",
-    #         "description": "Object existed"
-    #     }
-    # }
     FIND_ITEM_ERROR = {
         "http_code": 400,
         "content": {
@@ -95,93 +88,24 @@ class StatusCode(Enum):
         }
     }
 
-class StatusCodeV3(Enum):
-    UNKNOWN_ERROR = {
-        "http_code": 500,
-        "content": {
-            "code": "00001",
-            "description":"Some thing wrong in backend server please contact administrator"
-        }
-    }
-    SUCCESS = {
-        "http_code": 200,
-        "content":{
-            "code": "00002",
-            "description": "Success"
-        }
-    }
-    
-    INSERT_ERROR = {
+    # Auth error codes used by permissions / access_control
+    ERR_000001 = {
         "http_code": 400,
-        "content": {
-            "code": "00003",
-            "description": "Error when insert or update cam"
-        }
+        "detail": "Invalid request: missing request object"
     }
-    DB_ERROR = {
-        "http_code": 400,
-        "content": {
-            "code": "00004",
-            "description": "Insert record into database error"
-        }
+    ERR_000002 = {
+        "http_code": 401,
+        "detail": "Missing authorization header"
     }
-
-    FIND_ITEM_ERROR = {
-        "http_code": 400,
-        "content": {
-            "code": "00005",
-            "description": "Find item in database error"
-        }
+    ERR_000003 = {
+        "http_code": 401,
+        "detail": "Could not validate credentials"
     }
-    ITEM_NOT_FOUND_ERROR = {
-        "http_code": 400,
-        "content": {
-            "code": "00006",
-            "description": "Does not found any item in database"
-        }
+    ERR_000004 = {
+        "http_code": 403,
+        "detail": "Insufficient permissions: superuser required"
     }
-    INSTANCE_NOT_FOUND_ERROR = {
-        "http_code": 400,
-        "content": {
-            "code": "00007",
-            "description": "Instance not found"
-        }
+    ERR_000005 = {
+        "http_code": 401,
+        "detail": "Token has expired"
     }
-    NOT_SUCCESS_ALL = {
-        "http_code": 200,
-        "content": {
-            "code": "00008",
-            "description": "Not Success All"
-        }
-    }
-    NOT_SUCCESS = {
-        "http_code": 400,
-        "content": {
-            "code": "00009",
-            "description": "Not Success"
-        }
-    }
-    RECEIVED = {
-        "http_code": 200,
-        "content":{
-            "code": "00010",
-            "description": "Received"
-        }
-    }
-
-
-
-
-class FaceRegisterCode(Enum):
-    NOT_VALID = 10001
-    TOO_LARGE = 10002
-    NO_FACE = 10003
-    MANY_FACE = 10004
-    FAIL_PULL_IMAGE = 10005 
-    DARK = 10006
-    LIGHT = 10007
-    BLURRY = 10008
-    GRAYSCALE = 10009
-    ANGLE = 10010
-    SIMILARITY = 10011
-    VALID = 10099

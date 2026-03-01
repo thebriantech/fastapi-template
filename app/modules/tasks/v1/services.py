@@ -1,0 +1,10 @@
+"""
+Tasks v1 service.
+
+V1 uses the base ``TaskService`` as-is — no overrides needed.
+Re-exported here so the router always imports from its own package.
+"""
+
+from ..base_service import TaskService
+
+__all__ = ["TaskService"]
