@@ -7,6 +7,7 @@ pymongo==4.6.1
 loguru==0.7.2
 python-dotenv==1.0.0
 pydantic-settings>=2.0.0
+PyYAML>=6.0.0               # YAML config file support
 typing_inspect==0.9.0
 
 # ── SQL backends ─────────────────────────────────────────────────────────────
@@ -15,3 +16,13 @@ psycopg2-binary>=2.9.0     # PostgreSQL
 pymysql>=1.1.0             # MySQL / MariaDB
 cryptography>=42.0.0       # Required by pymysql for MySQL 8 caching_sha2_password auth
 pyodbc>=5.0.0              # MSSQL (SQL Server) — requires ODBC Driver 18 at OS level
+
+# ── Async DB drivers ──────────────────────────────────────────────────────────
+motor>=3.3.0               # Async MongoDB (Motor)
+asyncpg>=0.29.0            # Async PostgreSQL driver
+aiomysql>=0.2.0            # Async MySQL driver
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+httpx>=0.27.0,<0.28.0      # Pin below 0.28 — starlette TestClient uses the old httpx.Client(app=...) API

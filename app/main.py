@@ -16,7 +16,10 @@ Because routers access LogHandler and ConfigManager at *class-body* time
 
 import uvicorn
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 # ── Step 1 & 2: bootstrap config + logging before any module import ──────────
 from app.configs import ConfigManager
@@ -82,7 +85,7 @@ async def lifespan(app: FastAPI):
     else:
         _enabled = {b.strip() for b in _raw.split(",") if b.strip()}
 
-    # 1. MongoDB — primary / default
+    # 1. MongoDB — primary / default (async Motor driver)
     if "mongodb" in _enabled:
         mongo = MongoDBManager()
         mongo.connect(
@@ -101,7 +104,7 @@ async def lifespan(app: FastAPI):
         register_manager("default", mongo)
         logger.info("MongoDB connected")
 
-    # 2. PostgreSQL
+    # 2. PostgreSQL (async asyncpg driver)
     if "postgresql" in _enabled:
         pg = PostgreSQLManager()
         pg.connect(
@@ -116,7 +119,7 @@ async def lifespan(app: FastAPI):
         register_manager("postgres", pg)
         logger.info("PostgreSQL connected")
 
-    # 3. MySQL
+    # 3. MySQL (async aiomysql driver)
     if "mysql" in _enabled:
         my = MySQLManager()
         my.connect(
@@ -131,7 +134,7 @@ async def lifespan(app: FastAPI):
         register_manager("mysql", my)
         logger.info("MySQL connected")
 
-    # 4. MSSQL
+    # 4. MSSQL (sync pyodbc via thread executor)
     if "mssql" in _enabled:
         ms = MSSQLManager()
         ms.connect(
@@ -183,6 +186,47 @@ server = FastAPI(
     description=ConfigManager.config.app_description,
     version=ConfigManager.config.app_version,
     lifespan=lifespan,
+)
+
+
+# ── Global exception handlers ────────────────────────────────────────────────
+
+@server.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    """Return 422 with consistent JSON format for Pydantic validation errors."""
+    return JSONResponse(
+        status_code=422,
+        content={
+            "code": "VALIDATION_ERROR",
+            "description": "Request validation failed",
+            "detail": exc.errors(),
+        },
+    )
+
+
+@server.exception_handler(Exception)
+async def unhandled_exception_handler(request: Request, exc: Exception):
+    """Catch-all for unhandled exceptions — return 500 in consistent format."""
+    import traceback
+    logger = LogHandler.get_logger("general")
+    logger.error(f"Unhandled exception on {request.method} {request.url}: {traceback.format_exc()}")
+    return JSONResponse(
+        status_code=500,
+        content={
+            "code": "ERR_UNKNOWN",
+            "description": "An unexpected error occurred. Please contact the administrator.",
+            "detail": None,
+        },
+    )
+
+
+# CORS — configure allowed origins per environment (use specific origins in production)
+server.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Register module routers

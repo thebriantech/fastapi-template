@@ -33,7 +33,7 @@ class ItemServiceV2(ItemService):
         })
         return payload
 
-    def _on_after_create(self, item_id: str, data: dict):
+    async def _on_after_create(self, item_id: str, data: dict):
         self.logger.info(
             f"[{self.label}] v2 metadata — category={data.get('category', 'general')}, "
             f"tags={data.get('tags', [])}"

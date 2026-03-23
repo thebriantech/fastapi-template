@@ -1,5 +1,8 @@
+# Ignore all logs in logs_data
+app/logs/logs_data/*
 # Python
 __pycache__/
+**/__pycache__/
 *.py[cod]
 *.egg-info/
 dist/
@@ -9,6 +12,10 @@ build/
 .env
 .env.*.local
 
+# Docker override is committed as a dev default (docker-compose.override.yml).
+# Developers can create docker-compose.override.local.yml for personal tweaks.
+docker-compose.override.local.yml
+
 # Logs
 app/logs/logs_data/*.txt
 
@@ -16,3 +23,6 @@ app/logs/logs_data/*.txt
 .vscode/
 .idea/
 *.swp
+
+
+.pytest_cache/

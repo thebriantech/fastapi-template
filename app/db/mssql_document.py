@@ -1,55 +1,84 @@
 """
-Microsoft SQL Server–specific document class.
-
-Simply binds ``SQLDocument`` to a ``MSSQLManager`` alias.
-
-Usage:
-    from app.db.mssql_document import MSSQLDocument
-
-    class Item(MSSQLDocument):
-        _table_name = "items"
-        _manager_alias = "mssql"        # must match register_manager() key
-
-        @classmethod
-        def ensure_indexes(cls):
-            cls.execute_raw(
-                "CREATE INDEX idx_item_id ON items (item_id)"
-            )
-
-        # MSSQL-specific custom query:
-        @classmethod
-        def top_items(cls, n: int = 10):
-            return cls.execute_raw(
-                f"SELECT TOP {n} * FROM items ORDER BY price DESC"
-            )
-
-        # Native UPSERT using MERGE:
-        @classmethod
-        def upsert_item(cls, item_id: str, data: dict):
-            set_parts = ", ".join(f"T.{k} = :_upd_{k}" for k in data if k != "item_id")
-            cols = ", ".join(data.keys())
-            vals = ", ".join(f":{k}" for k in data)
-            params = {**data, **{f"_upd_{k}": v for k, v in data.items()}, "_match_id": item_id}
-            return cls.execute_raw(
-                f"MERGE INTO items AS T "
-                f"USING (SELECT :_match_id AS item_id) AS S ON T.item_id = S.item_id "
-                f"WHEN MATCHED THEN UPDATE SET {set_parts} "
-                f"WHEN NOT MATCHED THEN INSERT ({cols}) VALUES ({vals});",
-                params=params,
-            )
+MSSQL async document — wraps sync MSSQLDocument in a thread executor.
+MSSQL has no mature native async Python driver, so we use
+run_in_executor to avoid blocking the event loop.
 """
-
 from __future__ import annotations
+import asyncio
+import functools
+import traceback
+from typing import Any, List, Optional
 
-from app.db.sql_document import SQLDocument
+from app.db.base_document import BaseDocument
+from app.db._mssql_sync_document import MSSQLDocument as _SyncMSSQLDocument
 
 
-class MSSQLDocument(SQLDocument):
+class MSSQLDocument(BaseDocument):
     """
-    ``BaseDocument`` backed by Microsoft SQL Server.
-
-    Set ``_manager_alias = "mssql"`` (or whatever alias you used
-    when calling ``register_manager()``) in each subclass.
+    Async wrapper for the sync MSSQLDocument using thread-pool executor.
+    All CRUD calls are forwarded to _SyncMSSQLDocument via run_in_executor.
     """
-
+    _table_name: str = ""
+    _database_name: str = ""
     _manager_alias: str = "mssql"
+    _sync_cls = _SyncMSSQLDocument
+
+    @classmethod
+    async def _run(cls, method, *args, **kwargs):
+        loop = asyncio.get_event_loop()
+        fn = functools.partial(method, *args, **kwargs)
+        return await loop.run_in_executor(None, fn)
+
+    @classmethod
+    async def insert_one(cls, document: dict) -> dict:
+        return await cls._run(cls._sync_cls.insert_one, document)
+
+    @classmethod
+    async def insert_many(cls, documents: List[dict]) -> dict:
+        return await cls._run(cls._sync_cls.insert_many, documents)
+
+    @classmethod
+    async def find_one(cls, query: dict, **kwargs: Any) -> dict:
+        return await cls._run(cls._sync_cls.find_one, query, **kwargs)
+
+    @classmethod
+    async def find(cls, query: dict, order_by: Optional[str] = None,
+                   skip: int = 0, limit: int = 0, **kwargs: Any) -> dict:
+        return await cls._run(cls._sync_cls.find, query,
+                               order_by=order_by, skip=skip, limit=limit, **kwargs)
+
+    @classmethod
+    async def count(cls, query: Optional[dict] = None) -> dict:
+        return await cls._run(cls._sync_cls.count, query)
+
+    @classmethod
+    async def get_all(cls, order_by: Optional[str] = None, **kwargs: Any) -> dict:
+        return await cls._run(cls._sync_cls.get_all, order_by=order_by, **kwargs)
+
+    @classmethod
+    async def update_one(cls, query: dict, update: dict, **kwargs: Any) -> dict:
+        return await cls._run(cls._sync_cls.update_one, query, update, **kwargs)
+
+    @classmethod
+    async def update_many(cls, query: dict, update: dict, **kwargs: Any) -> dict:
+        return await cls._run(cls._sync_cls.update_many, query, update, **kwargs)
+
+    @classmethod
+    async def upsert_one(cls, query: dict, document: dict) -> dict:
+        return await cls._run(cls._sync_cls.upsert_one, query, document)
+
+    @classmethod
+    async def delete_one(cls, query: dict) -> dict:
+        return await cls._run(cls._sync_cls.delete_one, query)
+
+    @classmethod
+    async def delete_many(cls, query: dict) -> dict:
+        return await cls._run(cls._sync_cls.delete_many, query)
+
+    @classmethod
+    async def execute_raw(cls, operation: Any, params: Optional[dict] = None, **kwargs: Any) -> dict:
+        return await cls._run(cls._sync_cls.execute_raw, operation, params, **kwargs)
+
+    @classmethod
+    def ensure_indexes(cls) -> None:
+        """Override to create indexes at startup. Sync context is fine here."""

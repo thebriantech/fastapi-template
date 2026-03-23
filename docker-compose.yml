@@ -4,15 +4,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: ${DOCKER_TARGET:-production}
-    container_name: fastapi-app-${APP_ENV:-development}
+      target: production
+    container_name: fastapi-app
     restart: unless-stopped
     ports:
-      - "${APP_PORT:-8000}:8000"
-    env_file:
-      - .env.${APP_ENV:-development}
+      - "${APP_PORT:-18000}:8000"
     environment:
-      - APP_ENV=${APP_ENV:-development}
+      - APP_ENV=${APP_ENV:-production}
       - MONGODB_HOST=mongodb
       - MONGODB_PORT=27017
       - REDIS_HOST=redis
@@ -23,6 +21,12 @@ services:
       - MYSQL_PORT=3306
       - MSSQL_HOST=mssql
       - MSSQL_PORT=1433
+      # Secrets — override via environment or a .env file (never commit real values)
+      - MONGODB_PASSWORD=${MONGODB_PASSWORD:-password}
+      - AUTH_SECRET_KEY=${AUTH_SECRET_KEY:-change-me}
+      - PG_PASSWORD=${PG_PASSWORD:-password}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-password}
+      - MSSQL_PASSWORD=${MSSQL_PASSWORD:-Password123!}
     volumes:
       - ./app/logs/logs_data:/app/app/logs/logs_data
     depends_on:

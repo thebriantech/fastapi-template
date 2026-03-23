@@ -8,19 +8,19 @@ run-server-dev:
 	uvicorn app.main:server --host 0.0.0.0 --port 3636 --reload
 
 # ── Docker — environment targets ─────────────────────────────────────────────
-# Usage:
-#   make dev       — development (hot-reload)
-#   make staging   — staging
-#   make prod      — production
+# dev     → merges docker-compose.yml + docker-compose.override.yml (auto)
+#           builds `development` stage, mounts source code, hot-reload on
+# staging → only docker-compose.yml, code baked into image, APP_ENV=staging
+# prod    → only docker-compose.yml, code baked into image, APP_ENV=production
 
 dev:
-	APP_ENV=development DOCKER_TARGET=development docker compose up -d --build
+	docker compose up -d --build
 
 staging:
-	APP_ENV=staging docker compose up -d --build
+	APP_ENV=staging docker compose -f docker-compose.yml up -d --build
 
 prod:
-	APP_ENV=production docker compose up -d --build
+	APP_ENV=production docker compose -f docker-compose.yml up -d --build
 
 # ── Docker — generic targets ─────────────────────────────────────────────────
 
@@ -53,25 +53,17 @@ init-mssql:
 		-Q "IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = '$${MSSQL_DATABASE:-project_name}') CREATE DATABASE [$${MSSQL_DATABASE:-project_name}];"
 	@echo "MSSQL database ready."
 
-# Full first-time setup: start all + init MSSQL + create tables
+# Full first-time setup: start all + init MSSQL
 setup: up
 	@sleep 5
 	$(MAKE) init-mssql
-	$(MAKE) init-db
 	@echo "All services running. API at http://localhost:18000"
-
-# Initialise SQL tables / MongoDB indexes for all (or specific) backends
-# Usage:
-#   make init-db                          # all enabled backends
-#   make init-db BACKENDS=mongodb,postgresql  # specific backends
-init-db:
-ifdef BACKENDS
-	python -m scripts.init_db --backends $(BACKENDS)
-else
-	python -m scripts.init_db
-endif
 
 # Reset all volumes (DESTRUCTIVE)
 reset:
 	docker compose down -v
 	@echo "All volumes removed."
+
+# Bootstrap a new project from this template
+new-project:
+	@bash scripts/new_project.sh

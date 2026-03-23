@@ -1,3 +1,0 @@
-2024-11-15 09:37:22.781 | INFO     | app.auth.routers:si_login:32 - ====Login====
-2024-11-15 09:37:22.800 | ERROR    | app.auth.services:si_login:24 - Username string does not exist
-2024-11-15 09:37:22.811 | INFO     | app.auth.routers:si_login:34 - Login result: {'http_code': 400, 'content': {'code': 'AISS_00004', 'description': 'Does not found any item in database', 'detail': 'Username string does not exist'}}

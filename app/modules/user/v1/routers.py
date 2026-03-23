@@ -40,12 +40,12 @@ class UserRouter:
 
     @router.post("/{backend}/register", summary="Register user")
     @access_control(open=True)
-    def user_register(self, request: Request, backend: str, data: UserRegister):
-        result = self._svc(backend).user_register(data.dict())
+    async def user_register(self, request: Request, backend: str, data: UserRegister):
+        result = await self._svc(backend).user_register(data.model_dump())
         return JSONResponse(status_code=result["http_code"], content=result["content"])
 
     @router.delete("/{backend}/delete/{username}", summary="Delete user")
     @access_control(superuser=True)
-    def user_delete(self, request: Request, backend: str, username: str):
-        result = self._svc(backend).user_delete(username)
+    async def user_delete(self, request: Request, backend: str, username: str):
+        result = await self._svc(backend).user_delete(username)
         return JSONResponse(status_code=result["http_code"], content=result["content"])

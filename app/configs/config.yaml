@@ -1,0 +1,149 @@
+# ============================================================
+# config.yaml — single config file for all environments
+#
+# The active section is selected by the APP_ENV environment
+# variable (default: development).
+#
+# Any value can be overridden at runtime by setting the
+# corresponding environment variable (uppercased field name):
+#
+#   MONGODB_PASSWORD=secret
+#   AUTH_SECRET_KEY=my-prod-key
+#   APP_PORT=9000
+#
+# Sections:
+#   development  ← local dev (default)
+#   staging      ← pre-production
+#   production   ← live
+# ============================================================
+
+# Shared defaults — inherited by all environments via YAML anchors
+_defaults: &defaults
+  # Application
+  app_host: "0.0.0.0"
+  app_port: 8000
+  app_title: "FastAPI Template"
+  app_description: "A modular FastAPI project template"
+  app_version: "1.0.0"
+  api_prefix: "/api/v1"
+
+  # Logging
+  log_write_to_file: true
+  log_folder: "app/logs/logs_data"
+  log_rotation: "200MB"
+  log_retention: "7days"
+
+  # Auth / Access control
+  superuser_username: "admin"
+
+  # Database backend
+  # Which backend the auth module uses for login / token verification.
+  db_type: "mongodb"
+  # Comma-separated list of backends to connect on startup.
+  # Valid values: mongodb, postgresql, mysql, mssql  |  "all" = every backend
+  enabled_backends: "mongodb"
+
+  # MongoDB
+  mongodb_host: "localhost"
+  mongodb_port: 27017
+  mongodb_username: "admin"
+  mongodb_password: "password"
+  mongodb_auth: "admin"
+  mongodb_database: "project_name"
+  mongodb_max_pool_size: 50
+  mongodb_min_pool_size: 10
+  mongodb_connect_timeout_ms: 5000
+  mongodb_server_selection_timeout_ms: 5000
+  mongodb_socket_timeout_ms: 20000
+
+  # PostgreSQL
+  pg_host: "localhost"
+  pg_port: 5432
+  pg_username: "postgres"
+  pg_password: "password"
+  pg_database: "project_name"
+  pg_pool_size: 10
+  pg_max_overflow: 20
+
+  # MySQL / MariaDB
+  mysql_host: "localhost"
+  mysql_port: 3306
+  mysql_username: "root"
+  mysql_password: "password"
+  mysql_database: "project_name"
+  mysql_pool_size: 10
+  mysql_max_overflow: 20
+
+  # MSSQL (SQL Server)
+  mssql_host: "localhost"
+  mssql_port: 1433
+  mssql_username: "sa"
+  mssql_password: "password"
+  mssql_database: "project_name"
+  mssql_pool_size: 10
+  mssql_max_overflow: 20
+  mssql_driver: "ODBC Driver 18 for SQL Server"
+
+  # Auth / JWT — override auth_secret_key via env var, never commit secrets
+  auth_secret_key: "change-me"
+  auth_algorithm: "HS256"
+  auth_expire_seconds: 3600
+
+  # Redis
+  redis_host: "localhost"
+  redis_port: 6379
+  redis_password: ""
+
+  # S3 / MinIO (optional)
+  s3_access_key_id: ""
+  s3_secret_access_key: ""
+  s3_endpoint: ""
+  s3_bucket: ""
+
+  # OpenTelemetry (optional)
+  trace_endpoint: ""
+  trace_service_name: "fastapi-template"
+
+  # Encryption key files (optional)
+  crypt_aes_key_file: ""
+  crypt_hmac_key_file: ""
+
+
+# ── development ──────────────────────────────────────────────────────────────
+development:
+  <<: *defaults
+  app_env: development
+  log_write_to_file: false   # console-only in dev
+  auth_expire_seconds: 86400 # longer token for easier local testing
+
+
+# ── staging ──────────────────────────────────────────────────────────────────
+staging:
+  <<: *defaults
+  app_env: staging
+  log_rotation: "100MB"
+  log_retention: "14days"
+  mongodb_host: "mongodb"
+  pg_host: "postgres"
+  mysql_host: "mysql"
+  mssql_host: "mssql"
+  redis_host: "redis"
+
+
+# ── production ───────────────────────────────────────────────────────────────
+production:
+  <<: *defaults
+  app_env: production
+  log_rotation: "500MB"
+  log_retention: "30days"
+  mongodb_host: "mongodb"
+  mongodb_max_pool_size: 100
+  mongodb_min_pool_size: 20
+  pg_host: "postgres"
+  pg_pool_size: 20
+  pg_max_overflow: 40
+  mysql_host: "mysql"
+  mysql_pool_size: 20
+  mysql_max_overflow: 40
+  mssql_host: "mssql"
+  redis_host: "redis"

@@ -1,0 +1,23 @@
+# Development overrides — auto-loaded by `docker compose up`.
+#
+# What this adds over docker-compose.yml:
+#   - Builds the `development` Dockerfile stage (uvicorn --reload)
+#   - Mounts your local source code into the container so changes are
+#     reflected instantly without rebuilding the image.
+#   - Excludes __pycache__ and logs from the mount (anonymous volumes).
+#
+# Usage:
+#   docker compose up           ← dev (this file is merged automatically)
+#   docker compose -f docker-compose.yml up   ← production (override ignored)
+
+services:
+  app:
+    build:
+      target: development
+    container_name: fastapi-app-dev
+    environment:
+      - APP_ENV=development
+    volumes:
+      - .:/app                          # mount source code for hot-reload
+      - /app/__pycache__                # prevent host pycache pollution
+      - ./app/logs/logs_data:/app/app/logs/logs_data

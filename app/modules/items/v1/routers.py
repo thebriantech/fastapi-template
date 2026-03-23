@@ -40,30 +40,30 @@ class ItemRouter:
 
     @router.post("/{backend}", summary="Create item")
     @access_control()
-    def create_item(self, request: Request, backend: str, data: ItemCreate):
-        result = self._svc(backend).create_item(data.dict())
+    async def create_item(self, request: Request, backend: str, data: ItemCreate):
+        result = await self._svc(backend).create_item(data.model_dump())
         return JSONResponse(status_code=result["http_code"], content=result["content"])
 
     @router.get("/{backend}", summary="List all items")
     @access_control()
-    def get_all_items(self, request: Request, backend: str):
-        result = self._svc(backend).get_all_items()
+    async def get_all_items(self, request: Request, backend: str):
+        result = await self._svc(backend).get_all_items()
         return JSONResponse(status_code=result["http_code"], content=result["content"])
 
     @router.get("/{backend}/{item_id}", summary="Get one item")
     @access_control()
-    def get_item(self, request: Request, backend: str, item_id: str):
-        result = self._svc(backend).get_item(item_id)
+    async def get_item(self, request: Request, backend: str, item_id: str):
+        result = await self._svc(backend).get_item(item_id)
         return JSONResponse(status_code=result["http_code"], content=result["content"])
 
     @router.put("/{backend}/{item_id}", summary="Update item")
     @access_control()
-    def update_item(self, request: Request, backend: str, item_id: str, data: ItemUpdate):
-        result = self._svc(backend).update_item(item_id, data.dict())
+    async def update_item(self, request: Request, backend: str, item_id: str, data: ItemUpdate):
+        result = await self._svc(backend).update_item(item_id, data.model_dump())
         return JSONResponse(status_code=result["http_code"], content=result["content"])
 
     @router.delete("/{backend}/{item_id}", summary="Delete item")
     @access_control()
-    def delete_item(self, request: Request, backend: str, item_id: str):
-        result = self._svc(backend).delete_item(item_id)
+    async def delete_item(self, request: Request, backend: str, item_id: str):
+        result = await self._svc(backend).delete_item(item_id)
         return JSONResponse(status_code=result["http_code"], content=result["content"])

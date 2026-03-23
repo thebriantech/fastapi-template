@@ -17,7 +17,7 @@ class AuthRouter:
 
     @router.post("/login")
     @access_control(open=True)
-    def user_login(
+    async def user_login(
             self,
             request: Request,
             login_request: LoginRequest
@@ -33,7 +33,7 @@ class AuthRouter:
             JSONResponse: Access token on success, error details on failure.
         """
         self.logger.info("====User Login====")
-        result = self.auth_service.user_login(login_request.model_dump())
+        result = await self.auth_service.user_login(login_request.model_dump())
         self.logger.info(f"Login result: {result}")
         return JSONResponse(
             status_code=result["http_code"],
@@ -43,7 +43,7 @@ class AuthRouter:
 
     @router.get("/check-login")
     @access_control()
-    def check_login(
+    async def check_login(
             self,
             request: Request
         ):
@@ -56,7 +56,7 @@ class AuthRouter:
         Returns:
             JSONResponse: Confirmation that the user is logged in.
         """
-        status = StatusCode.SUCCESS.value
+        status = StatusCode.SUCCESS.response()
         status["content"]["detail"] = "You are logged in"
         return JSONResponse(
             status_code=status["http_code"],

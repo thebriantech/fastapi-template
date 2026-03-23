@@ -40,36 +40,36 @@ class TaskRouter:
 
     @router.post("/{backend}", summary="Create task")
     @access_control()
-    def create_task(self, request: Request, backend: str, data: TaskCreate):
-        result = self._svc(backend).create_task(data.dict())
+    async def create_task(self, request: Request, backend: str, data: TaskCreate):
+        result = await self._svc(backend).create_task(data.model_dump())
         return JSONResponse(status_code=result["http_code"], content=result["content"])
 
     @router.get("/{backend}", summary="List all tasks")
     @access_control()
-    def get_all_tasks(self, request: Request, backend: str):
-        result = self._svc(backend).get_all_tasks()
+    async def get_all_tasks(self, request: Request, backend: str):
+        result = await self._svc(backend).get_all_tasks()
         return JSONResponse(status_code=result["http_code"], content=result["content"])
 
     @router.get("/{backend}/assignee/{assignee}", summary="Tasks by assignee")
     @access_control()
-    def get_tasks_by_assignee(self, request: Request, backend: str, assignee: str):
-        result = self._svc(backend).get_tasks_by_assignee(assignee)
+    async def get_tasks_by_assignee(self, request: Request, backend: str, assignee: str):
+        result = await self._svc(backend).get_tasks_by_assignee(assignee)
         return JSONResponse(status_code=result["http_code"], content=result["content"])
 
     @router.get("/{backend}/{task_id}", summary="Get one task")
     @access_control()
-    def get_task(self, request: Request, backend: str, task_id: str):
-        result = self._svc(backend).get_task(task_id)
+    async def get_task(self, request: Request, backend: str, task_id: str):
+        result = await self._svc(backend).get_task(task_id)
         return JSONResponse(status_code=result["http_code"], content=result["content"])
 
     @router.put("/{backend}/{task_id}", summary="Update task")
     @access_control()
-    def update_task(self, request: Request, backend: str, task_id: str, data: TaskUpdate):
-        result = self._svc(backend).update_task(task_id, data.dict())
+    async def update_task(self, request: Request, backend: str, task_id: str, data: TaskUpdate):
+        result = await self._svc(backend).update_task(task_id, data.model_dump())
         return JSONResponse(status_code=result["http_code"], content=result["content"])
 
     @router.delete("/{backend}/{task_id}", summary="Delete task")
     @access_control()
-    def delete_task(self, request: Request, backend: str, task_id: str):
-        result = self._svc(backend).delete_task(task_id)
+    async def delete_task(self, request: Request, backend: str, task_id: str):
+        result = await self._svc(backend).delete_task(task_id)
         return JSONResponse(status_code=result["http_code"], content=result["content"])

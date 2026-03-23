@@ -27,22 +27,20 @@ Hook methods
 from __future__ import annotations
 
 import uuid
-from typing import Type
 
-from app.db.base_document import BaseDocument
 from app.utils.status_code import StatusCode
 
 
 class ItemService:
     """
-    Generic CRUD service that works with **any** ``BaseDocument`` subclass.
+    Generic CRUD service for any async ``BaseDocument`` subclass.
 
     Instantiate once per backend:
 
         pg_service = ItemService(ItemPg, "PostgreSQL", logger)
     """
 
-    def __init__(self, model: Type[BaseDocument], backend_label: str, logger):
+    def __init__(self, model, backend_label: str, logger):
         self.model = model
         self.label = backend_label
         self.logger = logger
@@ -69,25 +67,25 @@ class ItemService:
             item.pop("_id", None)
         return item
 
-    def _on_after_create(self, item_id: str, data: dict):
+    async def _on_after_create(self, item_id: str, data: dict):
         """Post-create hook — e.g. send event, update cache."""
 
-    def _on_after_update(self, item_id: str, data: dict):
+    async def _on_after_update(self, item_id: str, data: dict):
         """Post-update hook."""
 
-    def _on_after_delete(self, item_id: str):
+    async def _on_after_delete(self, item_id: str):
         """Post-delete hook."""
 
     # ── CRUD operations (own the flow — rarely need overriding) ──────────
 
-    def create_item(self, data: dict = None):
+    async def create_item(self, data: dict = None):
         try:
             payload = self._build_create_payload(data)
             item_id = payload["item_id"]
-            self.model.insert_one(payload)
-            self._on_after_create(item_id, data)
+            await self.model.insert_one(payload)
+            await self._on_after_create(item_id, data)
             self.logger.success(f"[{self.label}] Item '{data['name']}' created successfully")
-            status = StatusCode.SUCCESS.value
+            status = StatusCode.SUCCESS.response()
             status["content"]["detail"] = {
                 "item_id": item_id,
                 "backend": self.label,
@@ -96,16 +94,16 @@ class ItemService:
             return status
         except Exception as e:
             self.logger.error(f"[{self.label}] {e}")
-            status = StatusCode.UNKNOWN_ERROR.value
+            status = StatusCode.UNKNOWN_ERROR.response()
             status["content"]["detail"] = str(e)
             return status
 
-    def get_item(self, item_id: str = None):
+    async def get_item(self, item_id: str = None):
         try:
-            item = self.model.find_one({"item_id": item_id})
+            item = await self.model.find_one({"item_id": item_id})
             if not item["status"] or len(item["result"]) == 0:
                 self.logger.error(f"[{self.label}] Item {item_id} not found")
-                status = StatusCode.ITEM_NOT_FOUND_ERROR.value
+                status = StatusCode.ITEM_NOT_FOUND_ERROR.response()
                 status["content"]["detail"] = f"Item {item_id} not found"
                 return status
             result = item["result"]
@@ -114,82 +112,82 @@ class ItemService:
             elif isinstance(result, list):
                 result = [self._format_item(r) for r in result]
             self.logger.success(f"[{self.label}] Item {item_id} found")
-            status = StatusCode.SUCCESS.value
+            status = StatusCode.SUCCESS.response()
             status["content"]["detail"] = result
             return status
         except Exception as e:
             self.logger.error(f"[{self.label}] {e}")
-            status = StatusCode.UNKNOWN_ERROR.value
+            status = StatusCode.UNKNOWN_ERROR.response()
             status["content"]["detail"] = str(e)
             return status
 
-    def get_all_items(self):
+    async def get_all_items(self):
         try:
-            items = self.model.find({})
+            items = await self.model.find({})
             if not items["status"]:
                 self.logger.error(f"[{self.label}] Failed to retrieve items")
-                status = StatusCode.FIND_ITEM_ERROR.value
+                status = StatusCode.FIND_ITEM_ERROR.response()
                 status["content"]["detail"] = "Failed to retrieve items"
                 return status
             result = items["result"]
             if isinstance(result, list):
                 result = [self._format_item(r) for r in result]
             self.logger.success(f"[{self.label}] Found {len(result)} items")
-            status = StatusCode.SUCCESS.value
+            status = StatusCode.SUCCESS.response()
             status["content"]["detail"] = result
             return status
         except Exception as e:
             self.logger.error(f"[{self.label}] {e}")
-            status = StatusCode.UNKNOWN_ERROR.value
+            status = StatusCode.UNKNOWN_ERROR.response()
             status["content"]["detail"] = str(e)
             return status
 
-    def update_item(self, item_id: str = None, data: dict = None):
+    async def update_item(self, item_id: str = None, data: dict = None):
         try:
-            item = self.model.find_one({"item_id": item_id})
+            item = await self.model.find_one({"item_id": item_id})
             if not item["status"] or len(item["result"]) == 0:
                 self.logger.error(f"[{self.label}] Item {item_id} not found")
-                status = StatusCode.ITEM_NOT_FOUND_ERROR.value
+                status = StatusCode.ITEM_NOT_FOUND_ERROR.response()
                 status["content"]["detail"] = f"Item {item_id} not found"
                 return status
             update_data = self._build_update_payload(data)
             if not update_data:
-                status = StatusCode.SUCCESS.value
+                status = StatusCode.SUCCESS.response()
                 status["content"]["detail"] = "No fields to update"
                 return status
-            self.model.update_one({"item_id": item_id}, update_data)
-            self._on_after_update(item_id, data)
+            await self.model.update_one({"item_id": item_id}, update_data)
+            await self._on_after_update(item_id, data)
             self.logger.success(f"[{self.label}] Item {item_id} updated successfully")
-            status = StatusCode.SUCCESS.value
+            status = StatusCode.SUCCESS.response()
             status["content"]["detail"] = f"Item {item_id} updated successfully"
             return status
         except Exception as e:
             self.logger.error(f"[{self.label}] {e}")
-            status = StatusCode.UNKNOWN_ERROR.value
+            status = StatusCode.UNKNOWN_ERROR.response()
             status["content"]["detail"] = str(e)
             return status
 
-    def delete_item(self, item_id: str = None):
+    async def delete_item(self, item_id: str = None):
         try:
-            item = self.model.find_one({"item_id": item_id})
+            item = await self.model.find_one({"item_id": item_id})
             if not item["status"] or len(item["result"]) == 0:
                 self.logger.error(f"[{self.label}] Item {item_id} not found")
-                status = StatusCode.ITEM_NOT_FOUND_ERROR.value
+                status = StatusCode.ITEM_NOT_FOUND_ERROR.response()
                 status["content"]["detail"] = f"Item {item_id} not found"
                 return status
-            result = self.model.delete_one({"item_id": item_id})
+            result = await self.model.delete_one({"item_id": item_id})
             if not result["status"]:
-                self.logger.error(f"[{self.label}] {result['error']}")
-                status = StatusCode.UNKNOWN_ERROR.value
-                status["content"]["detail"] = result["error"]
+                self.logger.error(f"[{self.label}] {result.get('error', 'Unknown error')}")
+                status = StatusCode.UNKNOWN_ERROR.response()
+                status["content"]["detail"] = result.get("error", "Unknown error")
                 return status
-            self._on_after_delete(item_id)
+            await self._on_after_delete(item_id)
             self.logger.success(f"[{self.label}] Item {item_id} deleted successfully")
-            status = StatusCode.SUCCESS.value
+            status = StatusCode.SUCCESS.response()
             status["content"]["detail"] = f"Item {item_id} deleted successfully"
             return status
         except Exception as e:
             self.logger.error(f"[{self.label}] {e}")
-            status = StatusCode.UNKNOWN_ERROR.value
+            status = StatusCode.UNKNOWN_ERROR.response()
             status["content"]["detail"] = str(e)
             return status

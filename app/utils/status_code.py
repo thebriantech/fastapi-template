@@ -1,6 +1,12 @@
+from copy import deepcopy
 from enum import Enum
 
+
 class StatusCode(Enum):
+    def response(self) -> dict:
+        """Return a deep copy to prevent shared enum state from being mutated across requests."""
+        return deepcopy(self.value)
+
     UNKNOWN_ERROR = {
         "http_code": 500,
         "content": {
@@ -20,7 +26,7 @@ class StatusCode(Enum):
         "http_code": 400,
         "content": {
             "code": "AISS_00001",
-            "description": "Error when insert or update cam"
+            "description": "Error when inserting or updating record"
         }
     }
     DB_ERROR = {
@@ -38,14 +44,14 @@ class StatusCode(Enum):
         }
     }
     ITEM_NOT_FOUND_ERROR = {
-        "http_code": 400,
+        "http_code": 404,
         "content": {
             "code": "AISS_00004",
             "description": "Does not found any item in database"
         }
     }
     INSTANCE_NOT_FOUND_ERROR = {
-        "http_code": 400,
+        "http_code": 404,
         "content": {
             "code": "AISS_00005",
             "description": "Instance not found"
@@ -73,7 +79,7 @@ class StatusCode(Enum):
         }
     }
     ITEM_EXIST_ERROR = {
-        "http_code": 400,
+        "http_code": 409,
         "content": {
             "code": "AISS_00009",
             "description": "Item existed in database"
